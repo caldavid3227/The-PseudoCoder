@@ -1,0 +1,30 @@
+{
+	"version": 3,
+	"file": "motion-ui.css",
+	"sources": [
+		"../../node_modules/motion-ui/src/motion-ui.scss",
+		"../../node_modules/motion-ui/src/_settings.scss",
+		"../../node_modules/motion-ui/src/util/_animation.scss",
+		"../../node_modules/motion-ui/src/util/_args.scss",
+		"../../node_modules/motion-ui/src/util/_keyframe.scss",
+		"../../node_modules/motion-ui/src/util/_selector.scss",
+		"../../node_modules/motion-ui/src/util/_series.scss",
+		"../../node_modules/motion-ui/src/util/_transition.scss",
+		"../../node_modules/motion-ui/src/util/_unit.scss",
+		"../../node_modules/motion-ui/src/effects/_fade.scss",
+		"../../node_modules/motion-ui/src/effects/_hinge.scss",
+		"../../node_modules/motion-ui/src/effects/_spin.scss",
+		"../../node_modules/motion-ui/src/effects/_zoom.scss",
+		"../../node_modules/motion-ui/src/effects/_shake.scss",
+		"../../node_modules/motion-ui/src/effects/_slide.scss",
+		"../../node_modules/motion-ui/src/effects/_wiggle.scss",
+		"../../node_modules/motion-ui/src/transitions/_fade.scss",
+		"../../node_modules/motion-ui/src/transitions/_hinge.scss",
+		"../../node_modules/motion-ui/src/transitions/_zoom.scss",
+		"../../node_modules/motion-ui/src/transitions/_slide.scss",
+		"../../node_modules/motion-ui/src/transitions/_spin.scss",
+		"../../node_modules/motion-ui/src/_classes.scss"
+	],
+	"names": [],
+	"mappings": ""
+}

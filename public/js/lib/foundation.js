@@ -6621,7 +6621,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @option
      * @example 'slide-in-left'
      */
-    animationIn: '',
+    animationIn: 'Motion-UI',
     /**
      * Motion-UI class to use for animated elements. If none used, defaults to simple show/hide.
      * @option

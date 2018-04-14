@@ -12,7 +12,8 @@
     "test:client": "mocha test/client --recursive --compilers js:babel-register",
     "test:server": "mocha test/server --recursive --compilers js:babel-register",
     "watch": "npm-run-all --parallel watch:*",
-    "watch:js": "watchify app/main.js -t [ babelify --presets [es2015 react] ] -v -o public/js/bundle.js"
+    "watch:js": "watchify app/main.js -t [ babelify --presets [es2015 react] ] -v -o public/js/bundle.js",
+    "sass": "node-sass --source-map true node_modules/motion-ui/src -o dist/css"
   },
   "dependencies": {
     "async": "^1.5.2",
@@ -34,6 +35,7 @@
     "moment": "^2.12.0",
     "mongoose": "^4.4.8",
     "morgan": "^1.7.0",
+    "motion-ui": "^1.2.3",
     "nodemailer": "^2.3.0",
     "nodemon": "^1.9.1",
     "npm-run-all": "^1.8.0",
