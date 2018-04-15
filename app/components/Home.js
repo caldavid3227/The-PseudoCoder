@@ -19,7 +19,7 @@ class Home extends React.Component {
     <ul className="orbit-container">
       <li className="is-active orbit-slide">
         <figure className="orbit-figure">
-          <img className="orbit-image" src="https://placehold.it/1200x600/999?text=Slide-1" alt="Space"/>
+          <img className="orbit-image" src="https://s3.amazonaws.com/viking_education/web_development/prep_engineering/logical_thinking_small.jpg" alt="Pic1"/>
           <figcaption className="orbit-caption">Welcome To The PseudoCoder!</figcaption>
         </figure>
       </li>

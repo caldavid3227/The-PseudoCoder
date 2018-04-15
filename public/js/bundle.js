@@ -3278,75 +3278,26 @@ var Header = function (_get__$Component) {
           )
         )
       );
-
-      var _IndexLink_Component = _get__('IndexLink');
-
-      var _IndexLink_Component2 = _get__('IndexLink');
-
-      var _Link_Component4 = _get__('Link');
-
-      var _Link_Component5 = _get__('Link');
-
       return _react2.default.createElement(
         'div',
-        { className: 'top-bar' },
+        null,
         _react2.default.createElement(
           'div',
-          { className: 'top-bar-title' },
-          _react2.default.createElement(
-            'span',
-            { 'data-responsive-toggle': 'responsive-menu', 'data-hide-for': 'medium' },
-            _react2.default.createElement('span', { className: 'menu-icon light', 'data-toggle': true })
-          ),
-          _react2.default.createElement(
-            _IndexLink_Component,
-            { to: '/' },
-            _react2.default.createElement(
-              'h1',
-              null,
-              'The-PseudoCoder'
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { id: 'responsive-menu' },
+          { 'data-sticky-container': true, className: 'sticky-container', style: { height: "72px" } },
           _react2.default.createElement(
             'div',
-            { className: 'top-bar-left' },
+            { 'class': 'title-bar sticky is-anchored is-at-top', 'data-sticky': 'sticky', 'data-options': 'marginTop:0;', 'data-resize': 'sticky', 'data-mutate': 'sticky', style: { "max-width": "481px", "margin-top": "0px", bottom: "auto", top: "0px" }, 'data-events': 'resize' },
             _react2.default.createElement(
-              'ul',
-              { className: 'vertical medium-horizontal menu' },
+              'div',
+              { className: 'title-bar-left' },
               _react2.default.createElement(
-                'li',
-                null,
-                _react2.default.createElement(
-                  _IndexLink_Component2,
-                  { to: '/', activeClassName: 'active' },
-                  'Home'
-                )
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                _react2.default.createElement(
-                  _Link_Component4,
-                  { to: '/question', activeClassName: 'active' },
-                  'Code'
-                )
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                _react2.default.createElement(
-                  _Link_Component5,
-                  { to: '/contact', activeClassName: 'active' },
-                  'Contact'
-                )
+                'span',
+                { 'class': 'title-bar-title' },
+                'Sticky Navigation'
               )
-            )
-          ),
-          rightNav
+            ),
+            _react2.default.createElement('div', { className: 'title-bar-right' })
+          )
         )
       );
     }
@@ -3397,9 +3348,6 @@ function _get_original__(variableName) {
 
     case 'Link':
       return _reactRouter.Link;
-
-    case 'IndexLink':
-      return _reactRouter.IndexLink;
 
     case 'React':
       return _react2.default;
@@ -3594,7 +3542,7 @@ var Home = function (_get__$Component) {
                 _react2.default.createElement(
                   'figure',
                   { className: 'orbit-figure' },
-                  _react2.default.createElement('img', { className: 'orbit-image', src: 'https://placehold.it/1200x600/999?text=Slide-1', alt: 'Space' }),
+                  _react2.default.createElement('img', { className: 'orbit-image', src: 'https://s3.amazonaws.com/viking_education/web_development/prep_engineering/logical_thinking_small.jpg', alt: 'Pic1' }),
                   _react2.default.createElement(
                     'figcaption',
                     { className: 'orbit-caption' },
@@ -4257,13 +4205,13 @@ var question = function (_get__$Component) {
 				null,
 				_react2.default.createElement(
 					'div',
-					{ className: 'row' },
+					{ className: 'grid-x grid-padding-x align-center' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'columns small-3 large-5' },
+						{ className: 'cell large-5' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'goal' },
+							{ className: 'goal text-center' },
 							_react2.default.createElement(
 								'h3',
 								null,
@@ -4280,31 +4228,47 @@ var question = function (_get__$Component) {
 				),
 				_react2.default.createElement(
 					'div',
-					{ className: 'explain' },
+					{ className: 'grid-x grid-padding-x align-center' },
 					_react2.default.createElement(
-						'h3',
-						null,
-						'Wonderful!'
-					),
-					_react2.default.createElement(
-						'label',
-						null,
-						'Now, Please explain on a high level in plain english what you have to code to meet your goal!',
-						_react2.default.createElement('textarea', { placeholder: 'None' })
+						'div',
+						{ className: 'cell large-5' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'explain text-center' },
+							_react2.default.createElement(
+								'h3',
+								null,
+								'Wonderful!'
+							),
+							_react2.default.createElement(
+								'label',
+								null,
+								'Now, Please explain on a high level in plain english what you have to code to meet your goal!',
+								_react2.default.createElement('textarea', { placeholder: 'None' })
+							)
+						)
 					)
 				),
 				_react2.default.createElement(
 					'div',
-					{ className: 'steps' },
+					{ className: 'grid-x grid-padding-x align-center' },
 					_react2.default.createElement(
-						'h3',
-						null,
-						'Now break it down into steps(these are still high level steps we\'ll break them down further try to keep it to as few steps as possible based on your answer above)'
-					),
-					_react2.default.createElement(
-						'label',
-						null,
-						_react2.default.createElement('textarea', { placeholder: 'None' })
+						'div',
+						{ className: 'cell large-5' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'steps text-center' },
+							_react2.default.createElement(
+								'h3',
+								null,
+								'Now break it down into steps(these are still high level steps we\'ll break them down further try to keep it to as few steps as possible based on your answer above)'
+							),
+							_react2.default.createElement(
+								'label',
+								null,
+								_react2.default.createElement('textarea', { placeholder: 'None' })
+							)
+						)
 					)
 				)
 			);
