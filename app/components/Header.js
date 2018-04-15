@@ -31,20 +31,28 @@ class Header extends React.Component {
       </div>
     );
     return (
-      <div>
-          <div data-sticky-container className="sticky-container" style={{height:"72px"}}>
-              <div class="title-bar sticky is-anchored is-at-top" data-sticky="sticky" data-options="marginTop:0;" data-resize="sticky" data-mutate="sticky" style={{"max-width": "481px", "margin-top": "0px", bottom: "auto", top: "0px"}} data-events="resize">
-             
-                  <div className="title-bar-left">
-                    <span class="title-bar-title">Sticky Navigation</span>
-                  </div>
-                  <div className="title-bar-right"></div>
-              </div>
+      <div className="top-bar">
+        <div className="top-bar-title">
+          <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
+            <span className="menu-icon light" data-toggle></span>
+          </span>
+          <IndexLink to="/"><h1>The-PseudoCoder</h1></IndexLink>
+        </div>
+        <div id="responsive-menu">
+          <div className="top-bar-left">
+            <ul className="vertical medium-horizontal menu">
+              <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
+              <li><Link to="/question" activeClassNameName="active">Code</Link></li>
+              <li><Link to="/contact" activeClassName="active">Contact</Link></li>
+            </ul>
           </div>
-      </div>  
+          {rightNav}
+        </div>
+      </div>
     );
   }
 }
+
 const mapStateToProps = (state) => {
   return {
     token: state.auth.token,

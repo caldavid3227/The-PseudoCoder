@@ -3278,26 +3278,75 @@ var Header = function (_get__$Component) {
           )
         )
       );
+
+      var _IndexLink_Component = _get__('IndexLink');
+
+      var _IndexLink_Component2 = _get__('IndexLink');
+
+      var _Link_Component4 = _get__('Link');
+
+      var _Link_Component5 = _get__('Link');
+
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'top-bar' },
         _react2.default.createElement(
           'div',
-          { 'data-sticky-container': true, className: 'sticky-container', style: { height: "72px" } },
+          { className: 'top-bar-title' },
+          _react2.default.createElement(
+            'span',
+            { 'data-responsive-toggle': 'responsive-menu', 'data-hide-for': 'medium' },
+            _react2.default.createElement('span', { className: 'menu-icon light', 'data-toggle': true })
+          ),
+          _react2.default.createElement(
+            _IndexLink_Component,
+            { to: '/' },
+            _react2.default.createElement(
+              'h1',
+              null,
+              'The-PseudoCoder'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { id: 'responsive-menu' },
           _react2.default.createElement(
             'div',
-            { 'class': 'title-bar sticky is-anchored is-at-top', 'data-sticky': 'sticky', 'data-options': 'marginTop:0;', 'data-resize': 'sticky', 'data-mutate': 'sticky', style: { "max-width": "481px", "margin-top": "0px", bottom: "auto", top: "0px" }, 'data-events': 'resize' },
+            { className: 'top-bar-left' },
             _react2.default.createElement(
-              'div',
-              { className: 'title-bar-left' },
+              'ul',
+              { className: 'vertical medium-horizontal menu' },
               _react2.default.createElement(
-                'span',
-                { 'class': 'title-bar-title' },
-                'Sticky Navigation'
+                'li',
+                null,
+                _react2.default.createElement(
+                  _IndexLink_Component2,
+                  { to: '/', activeClassName: 'active' },
+                  'Home'
+                )
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                _react2.default.createElement(
+                  _Link_Component4,
+                  { to: '/question', activeClassNameName: 'active' },
+                  'Code'
+                )
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                _react2.default.createElement(
+                  _Link_Component5,
+                  { to: '/contact', activeClassName: 'active' },
+                  'Contact'
+                )
               )
-            ),
-            _react2.default.createElement('div', { className: 'title-bar-right' })
-          )
+            )
+          ),
+          rightNav
         )
       );
     }
@@ -3348,6 +3397,9 @@ function _get_original__(variableName) {
 
     case 'Link':
       return _reactRouter.Link;
+
+    case 'IndexLink':
+      return _reactRouter.IndexLink;
 
     case 'React':
       return _react2.default;
