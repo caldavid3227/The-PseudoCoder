@@ -8,15 +8,15 @@ class question extends React.Component{
 		super(props)
 
 		this.state={
-			key: null
+			key: "q1"
 		}
 
 		this.onNextCard=this.onNextCard.bind(this)
 	}
 
-	onNextCard(){
+	onNextCard(param){
 		this.setState({
-			key: "value"
+		 key: param  
 		})
 	}
 
@@ -25,25 +25,34 @@ class question extends React.Component{
 		return(
 			<div>
 				<p> {this.state.key} </p>
+				{switch (this.state.key)
+					case: "q1"
 				<QuestionCard 
 					title={ "Hello and welcome to The PseudoCoder!" }
 					label={ "Please, tell us what the name of your project is!" }
-					onNext={ this.onNextCard } 
+					onNext={ () => this.onNextCard("q2") } 
 				/>
-				
+					break;
+					case: "q2"
+				<QuestionCard 
+					title={ "Excellent!" }
+					label={ "Now, Please explain the main goal of your code!" }
+					onNext={ this.onNextCard } 
+				/>	
+				 break;
 				<QuestionCard 
 					title={ "Wonderful!" }
-					label={"Now, Please explain on a high level in plain english what you have to code to meet your goal!" }
+					label={ "Please explain in plain english what you have to code to meet your goal!" }
 					onNext={ this.onNextCard } 
 				/>	
 				
 				<QuestionCard 
-					title={ "" }
-					label={ "" }
+					title={ "Very Good!" }
+					label={ "What are the bigger steps to completing your code?(This should be a small number of steps example: Construct UI, Populate database, Set up boiler plate, ect...) " }
 					onNext={ this.onNextCard } 
 				>
 
-					<div> meh </div>
+				
 
 				</QuestionCard>
 				
@@ -53,11 +62,5 @@ class question extends React.Component{
 	}
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     messages: state.messages
-//   };
-// };
 
-// export default connect(mapStateToProps)(question);
 export default question

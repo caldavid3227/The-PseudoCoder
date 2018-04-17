@@ -1,7 +1,6 @@
 import React from 'react';
 
-export default function QuestionCard(props){
-	
+export default function YourProject(props){
 
 
 	return(
@@ -15,7 +14,7 @@ export default function QuestionCard(props){
 							props.children : 
 								<label>
   					 				{ props.label }
-  									<textarea rows="4" placeholder="None"></textarea>
+  									<textarea placeholder="None"></textarea>
 								</label>
 							}
 					

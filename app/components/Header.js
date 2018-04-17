@@ -27,6 +27,7 @@ class Header extends React.Component {
         <ul className="vertical medium-horizontal menu">
           <li><Link to="/login" activeClassName="active">Log in</Link></li>
           <li><Link to="/signup" activeClassName="active">Sign up</Link></li>
+          <li><Link to="/YourProject" activeClassName="active">Your Projects</Link></li>
         </ul>
       </div>
     );
