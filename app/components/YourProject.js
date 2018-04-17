@@ -1,5 +1,8 @@
 import React from 'react';
 
+import QuestionCard from './Questionnaire/QuestionCard'
+
+
 export default function YourProject(props){
 
 

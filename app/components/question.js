@@ -8,7 +8,7 @@ class question extends React.Component{
 		super(props)
 
 		this.state={
-			key: "q1"
+			key: null
 		}
 
 		this.onNextCard=this.onNextCard.bind(this)
@@ -25,19 +25,21 @@ class question extends React.Component{
 		return(
 			<div>
 				<p> {this.state.key} </p>
-				
+				{switch (this.state.key)
+					case: "q1"
 				<QuestionCard 
 					title={ "Hello and welcome to The PseudoCoder!" }
 					label={ "Please, tell us what the name of your project is!" }
-					onNext={ () => this.onNextCard("q2") } 
+					onNext={ () =>this.onNextCard("q2") } 
 				/>
-					
+					break;
+					case: "q2"
 				<QuestionCard 
 					title={ "Excellent!" }
 					label={ "Now, Please explain the main goal of your code!" }
 					onNext={ this.onNextCard } 
 				/>	
-				 
+				 break;
 				<QuestionCard 
 					title={ "Wonderful!" }
 					label={ "Please explain in plain english what you have to code to meet your goal!" }
