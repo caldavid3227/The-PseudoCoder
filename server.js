@@ -138,7 +138,7 @@ if (app.get('env') === 'production') {
 }
 
 app.listen(app.get('PORT'), function() {
-  console.log('Express server listening on port ' + app.get('PORT'));
+  console.log('Express server listening on PORT ' + app.get('PORT'));
 });
 
 module.exports = app;
