@@ -1,6 +1,7 @@
 import React from 'react';
 
-import QuestionCard from './Questionnaire/QuestionCard'
+import QuestionCard from './Questionnaire/QuestionCard';
+import question from './question.js';
 
 
 export default function YourProject(props){
