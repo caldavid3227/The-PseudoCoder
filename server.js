@@ -16,8 +16,8 @@ var jwt = require('jsonwebtoken');
 var moment = require('moment');
 var request = require('request');
 
-// Load environment variables from .env file
-dotenv.load();
+// Load environment; variables from .env file
+dotenv.load({silent: true});
 
 // ES6 Transpiler
 require('babel-core/register');
