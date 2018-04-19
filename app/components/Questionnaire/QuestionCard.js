@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function QuestionCard(props){
-	
+
 
 
 	return(
@@ -15,7 +15,7 @@ export default function QuestionCard(props){
 							props.children : 
 								<label>
   					 				{ props.label }
-  									<textarea rows="4" placeholder="None"></textarea>
+  									<textarea rows="4" placeholder="None" onChange={ props.handleInputChange }></textarea>
 								</label>
 							}
 					

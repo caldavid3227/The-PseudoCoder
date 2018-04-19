@@ -3229,6 +3229,8 @@ var Header = function (_get__$Component) {
 
       var _Link_Component4 = _get__('Link');
 
+      var _Link_Component5 = _get__('Link');
+
       var rightNav = this.props.token ? _react2.default.createElement(
         'div',
         { className: 'top-bar-right' },
@@ -3252,6 +3254,15 @@ var Header = function (_get__$Component) {
               { href: '#', onClick: this.handleLogout.bind(this) },
               'Logout'
             )
+          ),
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              _Link_Component2,
+              { to: '/YourProject', activeClassName: 'active' },
+              'Your Projects'
+            )
           )
         )
       ) : _react2.default.createElement(
@@ -3264,7 +3275,7 @@ var Header = function (_get__$Component) {
             'li',
             null,
             _react2.default.createElement(
-              _Link_Component2,
+              _Link_Component3,
               { to: '/login', activeClassName: 'active' },
               'Log in'
             )
@@ -3273,7 +3284,7 @@ var Header = function (_get__$Component) {
             'li',
             null,
             _react2.default.createElement(
-              _Link_Component3,
+              _Link_Component4,
               { to: '/signup', activeClassName: 'active' },
               'Sign up'
             )
@@ -3282,7 +3293,7 @@ var Header = function (_get__$Component) {
             'li',
             null,
             _react2.default.createElement(
-              _Link_Component4,
+              _Link_Component5,
               { to: '/YourProject', activeClassName: 'active' },
               'Your Projects'
             )
@@ -3294,9 +3305,9 @@ var Header = function (_get__$Component) {
 
       var _IndexLink_Component2 = _get__('IndexLink');
 
-      var _Link_Component5 = _get__('Link');
-
       var _Link_Component6 = _get__('Link');
+
+      var _Link_Component7 = _get__('Link');
 
       return _react2.default.createElement(
         'div',
@@ -3341,7 +3352,7 @@ var Header = function (_get__$Component) {
                 'li',
                 null,
                 _react2.default.createElement(
-                  _Link_Component5,
+                  _Link_Component6,
                   { to: '/question', activeClassNameName: 'active' },
                   'Code'
                 )
@@ -3350,7 +3361,7 @@ var Header = function (_get__$Component) {
                 'li',
                 null,
                 _react2.default.createElement(
-                  _Link_Component6,
+                  _Link_Component7,
                   { to: '/contact', activeClassName: 'active' },
                   'Contact'
                 )
@@ -4256,7 +4267,7 @@ function QuestionCard(props) {
 					"label",
 					null,
 					props.label,
-					_react2.default.createElement("textarea", { rows: "4", placeholder: "None" })
+					_react2.default.createElement("textarea", { rows: "4", placeholder: "None", onChange: props.handleInputChange })
 				),
 				_react2.default.createElement(
 					"button",
@@ -4346,6 +4357,8 @@ var _QuestionCard2 = _interopRequireDefault(_QuestionCard);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -4365,6 +4378,7 @@ var question = function (_get__$Component) {
 		};
 
 		_this.onNextCard = _this.onNextCard.bind(_this);
+		_this.handleInputChange = _this.handleInputChange.bind(_this);
 		return _this;
 	}
 
@@ -4375,10 +4389,60 @@ var question = function (_get__$Component) {
 				key: nextNode
 			});
 		}
+
+		/*componentDidMount(){
+  	this.loadProject();
+  };*/
+
+	}, {
+		key: 'loadAnswer',
+		value: function loadAnswer() {
+			var _this2 = this;
+
+			API.getProject().then(function (res) {
+				return _this2.setState({ project: res.data, answer: "" });
+			}).catch(function (err) {
+				return console.log(err);
+			});
+		}
+	}, {
+		key: 'handleInputChange',
+
+
+		/*deleteAnswer(id){
+    API.deleteProject(id)
+      .then(res => this.loadProject())
+      .catch(err => console.log(err));
+  };*/
+
+		value: function handleInputChange(event) {
+			console.log(event);
+			var _event$target = event.target,
+			    answer = _event$target.answer,
+			    value = _event$target.value;
+
+			this.setState(_defineProperty({}, answer, value));
+		}
+	}, {
+		key: 'handleFormSubmit',
+		value: function handleFormSubmit(event) {
+			var _this3 = this;
+
+			event.preventDefault();
+			if (this.state.answer) {
+				API.saveProject({
+					answer: this.state.answer
+				}).then(function (res) {
+					return _this3.loadProject();
+				}).catch(function (err) {
+					return console.log(err);
+				});
+			}
+		}
 	}, {
 		key: 'renderSwitch',
 		value: function renderSwitch(state) {
-			var _this2 = this;
+			var _this4 = this;
 
 			var _QuestionCard_Component = _get__('QuestionCard');
 
@@ -4396,8 +4460,9 @@ var question = function (_get__$Component) {
 						title: "Hello and welcome to The PseudoCoder!",
 						label: "Please, tell us what the name of your project is!",
 						onNext: function onNext() {
-							return _this2.onNextCard('q2');
-						}
+							return _this4.onNextCard('q2');
+						},
+						handleInputChange: this.handleInputChange
 					});
 				default:
 					return 'q1';
@@ -4407,8 +4472,9 @@ var question = function (_get__$Component) {
 						title: "Excellent!",
 						label: "Now, Please explain the main goal of your code!",
 						onNext: function onNext() {
-							return _this2.onNextCard('q3');
-						}
+							return _this4.onNextCard('q3');
+						},
+						handleInputChange: this.handleInputChange
 					});
 
 				case 'q3':
@@ -4416,8 +4482,9 @@ var question = function (_get__$Component) {
 						title: "Wonderful!",
 						label: "Please explain in plain english what you have to code to meet your goal!",
 						onNext: function onNext() {
-							return _this2.onNextCard('q4');
-						}
+							return _this4.onNextCard('q4');
+						},
+						handleInputChange: this.handleInputChange
 					});
 
 				case 'q4':
@@ -4425,8 +4492,9 @@ var question = function (_get__$Component) {
 						title: "Wonderful!",
 						label: "Please explain in plain english what you have to code to meet your goal!",
 						onNext: function onNext() {
-							return _this2.onNextCard('q5');
-						}
+							return _this4.onNextCard('q5');
+						},
+						handleInputChange: this.handleInputChange
 					});
 
 				case 'q5':
