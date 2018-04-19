@@ -15,9 +15,10 @@ export default function QuestionCard(props){
 							props.children : 
 								<label>
   					 				{ props.label }
-  									<textarea rows="4" placeholder="None" onChange={ props.handleInputChange }></textarea>
+  									<textarea rows="4" placeholder="None" onChange={ props.handleInputChange } value={props.text}></textarea>
 								</label>
 							}
+						{ props.nextStep == null ? <div></div> : <button className="hollow button" onClick={ props.nextStep }>New Step</button>}
 					
 						<button className="hollow button" onClick={ props.onNext }>Next</button>
 				</div>

@@ -1,6 +1,7 @@
 import React from 'react';
 
-import QuestionCard from './Questionnaire/QuestionCard'
+import QuestionCard from './Questionnaire/QuestionCard';
+import API from "../API";
 
 class question extends React.Component{
 
@@ -8,24 +9,40 @@ class question extends React.Component{
 		super(props)
 
 		this.state={
-			key: 'q1'
+			key: 'q1',
+			text: "",
+			answer_q1: []
 		}
-
+		console.log(API)
 		this.onNextCard=this.onNextCard.bind(this)
+		this.onNextStep=this.onNextStep.bind(this)
     	this.handleInputChange=this.handleInputChange.bind(this)
+    	this.handleFormSubmit=this.handleFormSubmit.bind(this)
 	}
 
 	onNextCard(nextNode){
+		if(Array.isArray(this.state['answer_' + this.state.key])){
+			this.setState({
+				key: nextNode,
+				['answer_' + this.state.key]: [...this.state['answer_' + this.state.key], this.state.text],
+				text: ""
+			})
+		} else{
 		this.setState({
-		 key: nextNode  
+		 key: nextNode, 
+		 ['answer_' + this.state.key]: this.state.text,
+		 text: ""
+		})};
+	};
+
+
+
+	onNextStep(){
+		this.setState({
+		  ['answer_' + this.state.key]: [...this.state['answer_' + this.state.key], this.state.text],
+		  text: ""
 		})
 	}
-
-	
-
-	/*componentDidMount(){
-		this.loadProject();
-	};*/
 
 
   loadAnswer(){
@@ -37,29 +54,22 @@ class question extends React.Component{
   	};
 
   
-  /*deleteAnswer(id){
-    API.deleteProject(id)
-      .then(res => this.loadProject())
-      .catch(err => console.log(err));
-  };*/
-
 	handleInputChange(event){
-		console.log(event);
+		console.log(event.target.name);
     const { answer, value } = event.target;
     this.setState({
-      [answer]: value
+      // [answer]: value
+      text: value
     });
+    console.log(this.state);
   };
 
-  handleFormSubmit(event){
-    event.preventDefault();
-    if (this.state.answer) {
+  handleFormSubmit(){
       API.saveProject({
-        answer: this.state.answer,
+        answers: [this.state.answer_q1, this.state.answer_q2, this.state.answer_q3, this.state.answer_q4, this.state.answer_q5]
       })
         .then(res => this.loadProject())
         .catch(err => console.log(err));
-    }
   };
 	
 	renderSwitch(state){
@@ -71,6 +81,8 @@ class question extends React.Component{
 					label={ "Please, tell us what the name of your project is!" }
 					onNext={ () => this.onNextCard('q2') } 
 					handleInputChange={ this.handleInputChange}
+					text={this.state.text}
+					nextStep={ this.onNextStep }
 				/> ;
 			default:
 				return 'q1';
@@ -81,6 +93,7 @@ class question extends React.Component{
 					label={ "Now, Please explain the main goal of your code!" }
 					onNext={ () => this.onNextCard('q3') } 
 					handleInputChange={ this.handleInputChange}
+					text={this.state.text}
 				/>;
 			
 
@@ -90,6 +103,7 @@ class question extends React.Component{
 					label={ "Please explain in plain english what you have to code to meet your goal!" }
 					onNext={ () => this.onNextCard('q4') } 
 					handleInputChange={ this.handleInputChange}
+					text={this.state.text}
 				/>;
 			
 
@@ -99,6 +113,7 @@ class question extends React.Component{
 					label={ "Please explain in plain english what you have to code to meet your goal!" }
 					onNext={ () => this.onNextCard('q5') } 
 					handleInputChange={ this.handleInputChange}
+					text={this.state.text}
 				/>;	
 			
 
@@ -107,7 +122,9 @@ class question extends React.Component{
 				return	<QuestionCard 
 					title={ "Very Good!" }
 					label={ "What are the bigger steps to completing your code?(This should be a small number of steps example: Construct UI, Populate database, Set up boiler plate, ect...) " }
-					onNext={ this.onNextCard } 
+					onNext={ this.handleFormSubmit } 
+					handleInputChange={ this.handleInputChange}
+					text={this.state.text}
 				>
 				</QuestionCard>;
 	

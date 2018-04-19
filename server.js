@@ -100,6 +100,9 @@ app.post('/reset/:token', userController.resetPost);
 app.get('/unlink/:provider', userController.ensureAuthenticated, userController.unlink);
 app.post('/auth/github', userController.authGithub);
 app.get('/auth/github/callback', userController.authGithubCallback);
+app.post('/api/project', function(req, res){
+    console.log(req.body);
+});
 
 // React server rendering
 app.use(function(req, res) {
