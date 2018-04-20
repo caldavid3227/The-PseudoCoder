@@ -15,6 +15,8 @@ var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 var moment = require('moment');
 var request = require('request');
+var project = require('./models/Project');
+
 
 // Load environment; variables from .env file
 dotenv.load({silent: true});
@@ -35,6 +37,7 @@ var routes = require('./app/routes');
 var configureStore = require('./app/store/configureStore').default;
 
 var app = express();
+
 
 
 mongoose.connect(process.env.MONGODB);
@@ -101,7 +104,11 @@ app.get('/unlink/:provider', userController.ensureAuthenticated, userController.
 app.post('/auth/github', userController.authGithub);
 app.get('/auth/github/callback', userController.authGithubCallback);
 app.post('/api/project', function(req, res){
-    console.log(req.body);
+    var data = new project(req.body);
+    data.save().then( item => {
+      res.send('item saved to DB')
+    })
+
 });
 
 // React server rendering

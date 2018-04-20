@@ -1,159 +1,4 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.__RewireAPI__ = exports.__ResetDependency__ = exports.__set__ = exports.__Rewire__ = exports.__GetDependency__ = exports.__get__ = undefined;
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _axios = require("axios");
-
-var _axios2 = _interopRequireDefault(_axios);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _DefaultExportValue = {
-
-  getProject: function getProject() {
-    return _get__("axios").get("/api/project");
-  },
-
-  saveProject: function saveProject(data) {
-    return _get__("axios").post("/api/project", data);
-  }
-
-};
-exports.default = _DefaultExportValue;
-var _RewiredData__ = {};
-var _RewireAPI__ = {};
-
-(function () {
-  function addPropertyToAPIObject(name, value) {
-    Object.defineProperty(_RewireAPI__, name, {
-      value: value,
-      enumerable: false,
-      configurable: true
-    });
-  }
-
-  addPropertyToAPIObject('__get__', _get__);
-  addPropertyToAPIObject('__GetDependency__', _get__);
-  addPropertyToAPIObject('__Rewire__', _set__);
-  addPropertyToAPIObject('__set__', _set__);
-  addPropertyToAPIObject('__reset__', _reset__);
-  addPropertyToAPIObject('__ResetDependency__', _reset__);
-  addPropertyToAPIObject('__with__', _with__);
-})();
-
-function _get__(variableName) {
-  return _RewiredData__ === undefined || _RewiredData__[variableName] === undefined ? _get_original__(variableName) : _RewiredData__[variableName];
-}
-
-function _get_original__(variableName) {
-  switch (variableName) {
-    case "axios":
-      return _axios2.default;
-  }
-
-  return undefined;
-}
-
-function _assign__(variableName, value) {
-  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
-    return _set_original__(variableName, value);
-  } else {
-    return _RewiredData__[variableName] = value;
-  }
-}
-
-function _set_original__(variableName, _value) {
-  switch (variableName) {}
-
-  return undefined;
-}
-
-function _update_operation__(operation, variableName, prefix) {
-  var oldValue = _get__(variableName);
-
-  var newValue = operation === '++' ? oldValue + 1 : oldValue - 1;
-
-  _assign__(variableName, newValue);
-
-  return prefix ? newValue : oldValue;
-}
-
-function _set__(variableName, value) {
-  if ((typeof variableName === "undefined" ? "undefined" : _typeof(variableName)) === 'object') {
-    Object.keys(variableName).forEach(function (name) {
-      _RewiredData__[name] = variableName[name];
-    });
-  } else {
-    return _RewiredData__[variableName] = value;
-  }
-}
-
-function _reset__(variableName) {
-  delete _RewiredData__[variableName];
-}
-
-function _with__(object) {
-  var rewiredVariableNames = Object.keys(object);
-  var previousValues = {};
-
-  function reset() {
-    rewiredVariableNames.forEach(function (variableName) {
-      _RewiredData__[variableName] = previousValues[variableName];
-    });
-  }
-
-  return function (callback) {
-    rewiredVariableNames.forEach(function (variableName) {
-      previousValues[variableName] = _RewiredData__[variableName];
-      _RewiredData__[variableName] = object[variableName];
-    });
-    var result = callback();
-
-    if (!!result && typeof result.then == 'function') {
-      result.then(reset).catch(reset);
-    } else {
-      reset();
-    }
-
-    return result;
-  };
-}
-
-var _typeOfOriginalExport = typeof _DefaultExportValue === "undefined" ? "undefined" : _typeof(_DefaultExportValue);
-
-function addNonEnumerableProperty(name, value) {
-  Object.defineProperty(_DefaultExportValue, name, {
-    value: value,
-    enumerable: false,
-    configurable: true
-  });
-}
-
-if ((_typeOfOriginalExport === 'object' || _typeOfOriginalExport === 'function') && Object.isExtensible(_DefaultExportValue)) {
-  addNonEnumerableProperty('__get__', _get__);
-  addNonEnumerableProperty('__GetDependency__', _get__);
-  addNonEnumerableProperty('__Rewire__', _set__);
-  addNonEnumerableProperty('__set__', _set__);
-  addNonEnumerableProperty('__reset__', _reset__);
-  addNonEnumerableProperty('__ResetDependency__', _reset__);
-  addNonEnumerableProperty('__with__', _with__);
-  addNonEnumerableProperty('__RewireAPI__', _RewireAPI__);
-}
-
-exports.__get__ = _get__;
-exports.__GetDependency__ = _get__;
-exports.__Rewire__ = _set__;
-exports.__set__ = _set__;
-exports.__ResetDependency__ = _reset__;
-exports.__RewireAPI__ = _RewireAPI__;
-
-},{"axios":305}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -532,7 +377,7 @@ exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 exports.default = _RewireAPI__;
 
-},{"moment":92,"react-cookie":100,"react-router":137}],3:[function(require,module,exports){
+},{"moment":92,"react-cookie":100,"react-router":137}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -572,7 +417,7 @@ function submitContactForm(name, email, message) {
   };
 }
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -976,7 +821,7 @@ exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 exports.default = _RewireAPI__;
 
-},{"moment":92,"querystring":99,"react-cookie":100,"react-router":137,"url":301}],5:[function(require,module,exports){
+},{"moment":92,"querystring":99,"react-cookie":100,"react-router":137,"url":301}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1229,7 +1074,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"../../actions/auth":2,"../Messages":15,"react":283,"react-redux":104}],6:[function(require,module,exports){
+},{"../../actions/auth":1,"../Messages":14,"react":283,"react-redux":104}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1575,7 +1420,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"../../actions/auth":2,"../../actions/oauth":4,"../Messages":15,"react":283,"react-redux":104,"react-router":137}],7:[function(require,module,exports){
+},{"../../actions/auth":1,"../../actions/oauth":3,"../Messages":14,"react":283,"react-redux":104,"react-router":137}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2052,7 +1897,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"../../actions/auth":2,"../../actions/oauth":4,"../Messages":15,"react":283,"react-redux":104}],8:[function(require,module,exports){
+},{"../../actions/auth":1,"../../actions/oauth":3,"../Messages":14,"react":283,"react-redux":104}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2304,7 +2149,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"../../actions/auth":2,"../Messages":15,"react":283,"react-redux":104}],9:[function(require,module,exports){
+},{"../../actions/auth":1,"../Messages":14,"react":283,"react-redux":104}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2658,7 +2503,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"../../actions/auth":2,"../../actions/oauth":4,"../Messages":15,"react":283,"react-redux":104,"react-router":137}],10:[function(require,module,exports){
+},{"../../actions/auth":1,"../../actions/oauth":3,"../Messages":14,"react":283,"react-redux":104,"react-router":137}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2856,7 +2701,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"./Footer":12,"./Header":13,"react":283}],11:[function(require,module,exports){
+},{"./Footer":11,"./Header":12,"react":283}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3140,7 +2985,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"../actions/contact":3,"./Messages":15,"react":283,"react-redux":104}],12:[function(require,module,exports){
+},{"../actions/contact":2,"./Messages":14,"react":283,"react-redux":104}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3322,7 +3167,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"react":283}],13:[function(require,module,exports){
+},{"react":283}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3687,7 +3532,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"../actions/auth":2,"react":283,"react-redux":104,"react-router":137}],14:[function(require,module,exports){
+},{"../actions/auth":1,"react":283,"react-redux":104,"react-router":137}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4021,7 +3866,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"./Messages":15,"react":283,"react-redux":104}],15:[function(require,module,exports){
+},{"./Messages":14,"react":283,"react-redux":104}],14:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4225,7 +4070,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"react":283}],16:[function(require,module,exports){
+},{"react":283}],15:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4386,7 +4231,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"react":283}],17:[function(require,module,exports){
+},{"react":283}],16:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4439,7 +4284,7 @@ function QuestionCard(props) {
 	);
 }
 
-},{"react":283}],18:[function(require,module,exports){
+},{"react":283}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4495,7 +4340,7 @@ function YourProject(props) {
 	);
 }
 
-},{"./Questionnaire/QuestionCard":17,"./question.js":19,"react":283}],19:[function(require,module,exports){
+},{"./Questionnaire/QuestionCard":16,"./question.js":18,"react":283}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4515,7 +4360,7 @@ var _QuestionCard = require('./Questionnaire/QuestionCard');
 
 var _QuestionCard2 = _interopRequireDefault(_QuestionCard);
 
-var _API = require('../API');
+var _API = require('../../models/API');
 
 var _API2 = _interopRequireDefault(_API);
 
@@ -4604,20 +4449,18 @@ var question = function (_get__$Component) {
 	}, {
 		key: 'handleFormSubmit',
 		value: function handleFormSubmit() {
-			var _this3 = this;
-
 			_get__('API').saveProject({
 				answers: [this.state.answer_q1, this.state.answer_q2, this.state.answer_q3, this.state.answer_q4, this.state.answer_q5]
-			}).then(function (res) {
-				return _this3.loadProject();
-			}).catch(function (err) {
+			})
+			// .then(res => this.loadProject())
+			.catch(function (err) {
 				return console.log(err);
 			});
 		}
 	}, {
 		key: 'renderSwitch',
 		value: function renderSwitch(state) {
-			var _this4 = this;
+			var _this3 = this;
 
 			var _QuestionCard_Component = _get__('QuestionCard');
 
@@ -4635,11 +4478,10 @@ var question = function (_get__$Component) {
 						title: "Hello and welcome to The PseudoCoder!",
 						label: "Please, tell us what the name of your project is!",
 						onNext: function onNext() {
-							return _this4.onNextCard('q2');
+							return _this3.onNextCard('q2');
 						},
 						handleInputChange: this.handleInputChange,
-						text: this.state.text,
-						nextStep: this.onNextStep
+						text: this.state.text
 					});
 				default:
 					return 'q1';
@@ -4649,7 +4491,7 @@ var question = function (_get__$Component) {
 						title: "Excellent!",
 						label: "Now, Please explain the main goal of your code!",
 						onNext: function onNext() {
-							return _this4.onNextCard('q3');
+							return _this3.onNextCard('q3');
 						},
 						handleInputChange: this.handleInputChange,
 						text: this.state.text
@@ -4660,31 +4502,33 @@ var question = function (_get__$Component) {
 						title: "Wonderful!",
 						label: "Please explain in plain english what you have to code to meet your goal!",
 						onNext: function onNext() {
-							return _this4.onNextCard('q4');
+							return _this3.onNextCard('q4');
 						},
 						handleInputChange: this.handleInputChange,
 						text: this.state.text
 					});
 
 				case 'q4':
+
 					return _react2.default.createElement(_QuestionCard_Component4, {
-						title: "Wonderful!",
-						label: "Please explain in plain english what you have to code to meet your goal!",
+						title: "Very Good!",
+						label: "What are the bigger steps to completing your code?(This should be a small number of steps example: Construct UI, Populate database, Set up boiler plate, ect...) ",
 						onNext: function onNext() {
-							return _this4.onNextCard('q5');
+							return _this3.onNextCard('q5');
 						},
 						handleInputChange: this.handleInputChange,
-						text: this.state.text
+						text: this.state.text,
+						nextStep: this.onNextStep
 					});
 
 				case 'q5':
-
 					return _react2.default.createElement(_QuestionCard_Component5, {
-						title: "Very Good!",
-						label: "What are the bigger steps to completing your code?(This should be a small number of steps example: Construct UI, Populate database, Set up boiler plate, ect...) ",
+						title: "Awesome!",
+						label: "Now, break down those larger steps in to smaller steps, just a few per each",
 						onNext: this.handleFormSubmit,
 						handleInputChange: this.handleInputChange,
-						text: this.state.text
+						text: this.state.text,
+						nextStep: this.onNextStep
 					});
 
 			};
@@ -4841,7 +4685,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"../API":1,"./Questionnaire/QuestionCard":17,"react":283}],20:[function(require,module,exports){
+},{"../../models/API":25,"./Questionnaire/QuestionCard":16,"react":283}],19:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5011,7 +4855,7 @@ exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 exports.default = _RewireAPI__;
 
-},{"./routes":24,"./store/configureStore":25,"react":283,"react-dom":101,"react-redux":104,"react-router":137,"whatwg-fetch":304}],21:[function(require,module,exports){
+},{"./routes":23,"./store/configureStore":24,"react":283,"react-dom":101,"react-redux":104,"react-router":137,"whatwg-fetch":304}],20:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5174,7 +5018,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{}],22:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5335,7 +5179,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"./auth":21,"./messages":23,"redux":296}],23:[function(require,module,exports){
+},{"./auth":20,"./messages":22,"redux":296}],22:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5380,7 +5224,7 @@ function messages() {
   }
 }
 
-},{}],24:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5661,7 +5505,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"./components/Account/Forgot":5,"./components/Account/Login":6,"./components/Account/Profile":7,"./components/Account/Reset":8,"./components/Account/Signup":9,"./components/App":10,"./components/Contact":11,"./components/Home":14,"./components/NotFound":16,"./components/YourProject":18,"./components/question":19,"react":283,"react-router":137}],25:[function(require,module,exports){
+},{"./components/Account/Forgot":4,"./components/Account/Login":5,"./components/Account/Profile":6,"./components/Account/Reset":7,"./components/Account/Signup":8,"./components/App":9,"./components/Contact":10,"./components/Home":13,"./components/NotFound":15,"./components/YourProject":17,"./components/question":18,"react":283,"react-router":137}],24:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5841,7 +5685,169 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"../reducers":22,"redux":296,"redux-logger":288,"redux-promise":289,"redux-thunk":290}],26:[function(require,module,exports){
+},{"../reducers":21,"redux":296,"redux-logger":288,"redux-promise":289,"redux-thunk":290}],25:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.__RewireAPI__ = exports.__ResetDependency__ = exports.__set__ = exports.__Rewire__ = exports.__GetDependency__ = exports.__get__ = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _DefaultExportValue2;
+
+var _axios = require("axios");
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var _DefaultExportValue = (_DefaultExportValue2 = {
+
+  getProject: function getProject() {
+    return _get__("axios").get("/api/project");
+  }
+
+}, _defineProperty(_DefaultExportValue2, "getProject", function getProject() {
+  return _get__("axios").get("/api/project" + id);
+}), _defineProperty(_DefaultExportValue2, "deleteProject", function deleteProject(id) {
+  return _get__("axios").delete("/api/project/" + id);
+}), _defineProperty(_DefaultExportValue2, "saveProject", function saveProject(data) {
+  return _get__("axios").post("/api/project", data);
+}), _DefaultExportValue2);
+
+exports.default = _DefaultExportValue;
+var _RewiredData__ = {};
+var _RewireAPI__ = {};
+
+(function () {
+  function addPropertyToAPIObject(name, value) {
+    Object.defineProperty(_RewireAPI__, name, {
+      value: value,
+      enumerable: false,
+      configurable: true
+    });
+  }
+
+  addPropertyToAPIObject('__get__', _get__);
+  addPropertyToAPIObject('__GetDependency__', _get__);
+  addPropertyToAPIObject('__Rewire__', _set__);
+  addPropertyToAPIObject('__set__', _set__);
+  addPropertyToAPIObject('__reset__', _reset__);
+  addPropertyToAPIObject('__ResetDependency__', _reset__);
+  addPropertyToAPIObject('__with__', _with__);
+})();
+
+function _get__(variableName) {
+  return _RewiredData__ === undefined || _RewiredData__[variableName] === undefined ? _get_original__(variableName) : _RewiredData__[variableName];
+}
+
+function _get_original__(variableName) {
+  switch (variableName) {
+    case "axios":
+      return _axios2.default;
+  }
+
+  return undefined;
+}
+
+function _assign__(variableName, value) {
+  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
+    return _set_original__(variableName, value);
+  } else {
+    return _RewiredData__[variableName] = value;
+  }
+}
+
+function _set_original__(variableName, _value) {
+  switch (variableName) {}
+
+  return undefined;
+}
+
+function _update_operation__(operation, variableName, prefix) {
+  var oldValue = _get__(variableName);
+
+  var newValue = operation === '++' ? oldValue + 1 : oldValue - 1;
+
+  _assign__(variableName, newValue);
+
+  return prefix ? newValue : oldValue;
+}
+
+function _set__(variableName, value) {
+  if ((typeof variableName === "undefined" ? "undefined" : _typeof(variableName)) === 'object') {
+    Object.keys(variableName).forEach(function (name) {
+      _RewiredData__[name] = variableName[name];
+    });
+  } else {
+    return _RewiredData__[variableName] = value;
+  }
+}
+
+function _reset__(variableName) {
+  delete _RewiredData__[variableName];
+}
+
+function _with__(object) {
+  var rewiredVariableNames = Object.keys(object);
+  var previousValues = {};
+
+  function reset() {
+    rewiredVariableNames.forEach(function (variableName) {
+      _RewiredData__[variableName] = previousValues[variableName];
+    });
+  }
+
+  return function (callback) {
+    rewiredVariableNames.forEach(function (variableName) {
+      previousValues[variableName] = _RewiredData__[variableName];
+      _RewiredData__[variableName] = object[variableName];
+    });
+    var result = callback();
+
+    if (!!result && typeof result.then == 'function') {
+      result.then(reset).catch(reset);
+    } else {
+      reset();
+    }
+
+    return result;
+  };
+}
+
+var _typeOfOriginalExport = typeof _DefaultExportValue === "undefined" ? "undefined" : _typeof(_DefaultExportValue);
+
+function addNonEnumerableProperty(name, value) {
+  Object.defineProperty(_DefaultExportValue, name, {
+    value: value,
+    enumerable: false,
+    configurable: true
+  });
+}
+
+if ((_typeOfOriginalExport === 'object' || _typeOfOriginalExport === 'function') && Object.isExtensible(_DefaultExportValue)) {
+  addNonEnumerableProperty('__get__', _get__);
+  addNonEnumerableProperty('__GetDependency__', _get__);
+  addNonEnumerableProperty('__Rewire__', _set__);
+  addNonEnumerableProperty('__set__', _set__);
+  addNonEnumerableProperty('__reset__', _reset__);
+  addNonEnumerableProperty('__ResetDependency__', _reset__);
+  addNonEnumerableProperty('__with__', _with__);
+  addNonEnumerableProperty('__RewireAPI__', _RewireAPI__);
+}
+
+exports.__get__ = _get__;
+exports.__GetDependency__ = _get__;
+exports.__Rewire__ = _set__;
+exports.__set__ = _set__;
+exports.__ResetDependency__ = _reset__;
+exports.__RewireAPI__ = _RewireAPI__;
+
+},{"axios":305}],26:[function(require,module,exports){
 /*!
  * cookie
  * Copyright(c) 2012-2014 Roman Shtylman
@@ -42116,4 +42122,4 @@ module.exports = {
   trim: trim
 };
 
-},{"./helpers/bind":319}]},{},[20]);
+},{"./helpers/bind":319}]},{},[19]);

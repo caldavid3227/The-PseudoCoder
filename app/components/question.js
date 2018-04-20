@@ -1,7 +1,7 @@
 import React from 'react';
 
 import QuestionCard from './Questionnaire/QuestionCard';
-import API from "../API";
+import API from "../../models/API";
 
 class question extends React.Component{
 
@@ -68,7 +68,7 @@ class question extends React.Component{
       API.saveProject({
         answers: [this.state.answer_q1, this.state.answer_q2, this.state.answer_q3, this.state.answer_q4, this.state.answer_q5]
       })
-        .then(res => this.loadProject())
+        // .then(res => this.loadProject())
         .catch(err => console.log(err));
   };
 	
@@ -82,7 +82,6 @@ class question extends React.Component{
 					onNext={ () => this.onNextCard('q2') } 
 					handleInputChange={ this.handleInputChange}
 					text={this.state.text}
-					nextStep={ this.onNextStep }
 				/> ;
 			default:
 				return 'q1';
@@ -105,28 +104,30 @@ class question extends React.Component{
 					handleInputChange={ this.handleInputChange}
 					text={this.state.text}
 				/>;
-			
 
 			case 'q4':				
-				return	<QuestionCard 
-					title={ "Wonderful!" }
-					label={ "Please explain in plain english what you have to code to meet your goal!" }
-					onNext={ () => this.onNextCard('q5') } 
-					handleInputChange={ this.handleInputChange}
-					text={this.state.text}
-				/>;	
-			
-
-			case 'q5':				
 				
 				return	<QuestionCard 
 					title={ "Very Good!" }
 					label={ "What are the bigger steps to completing your code?(This should be a small number of steps example: Construct UI, Populate database, Set up boiler plate, ect...) " }
+					onNext={ () => this.onNextCard('q5') } 
+					handleInputChange={ this.handleInputChange}
+					text={this.state.text}
+					nextStep={ this.onNextStep }
+				>
+				</QuestionCard>;
+			
+
+			case 'q5':				
+				return	<QuestionCard 
+					title={ "Awesome!" }
+					label={ "Now, break down those larger steps in to smaller steps, just a few per each" }
 					onNext={ this.handleFormSubmit } 
 					handleInputChange={ this.handleInputChange}
 					text={this.state.text}
-				>
-				</QuestionCard>;
+					nextStep={ this.onNextStep }
+				/>;	
+			
 	
 			
 		};

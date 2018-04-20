@@ -61,13 +61,11 @@ userSchema.options.toJSON = {
 
 var User = mongoose.model('User', userSchema);
 
-const projectSchema = new mongoose.Schema({
-  answers: { type: [], required: true },
-  date: { type: Date, default: Date.now }
-});
+// const projectSchema = new mongoose.Schema({
+//   answer: { type: [], required: true },
+//   date: { type: Date, default: Date.now }
+// });
+// const Project = mongoose.model("Project", projectSchema);
 
-const Project = mongoose.model("Project", projectSchema);
-
+// module.exports = Project;
 module.exports = User;
-
-module.exports = Project;
