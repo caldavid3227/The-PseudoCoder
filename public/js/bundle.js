@@ -3608,7 +3608,7 @@ var Home = function (_get__$Component) {
                 _react2.default.createElement(
                   'figure',
                   { className: 'orbit-figure' },
-                  _react2.default.createElement('img', { className: 'orbit-image', src: 'https://placehold.it/1200x600/888?text=Slide-2', alt: 'Space' }),
+                  _react2.default.createElement('img', { className: 'orbit-image', src: 'https://blog.nxp.com/wp-content/uploads/2017/10/Software-car-reuse-960x425.jpg', alt: 'Space' }),
                   _react2.default.createElement(
                     'figcaption',
                     { className: 'orbit-caption' },
@@ -3622,7 +3622,7 @@ var Home = function (_get__$Component) {
                 _react2.default.createElement(
                   'figure',
                   { className: 'orbit-figure' },
-                  _react2.default.createElement('img', { className: 'orbit-image', src: 'https://placehold.it/1200x600/777?text=Slide-3', alt: 'Space' }),
+                  _react2.default.createElement('img', { className: 'orbit-image', src: 'https://alivenewspaper.com/wp-content/uploads/2017/08/build_your_business_plan_tool.jpg', alt: 'Space' }),
                   _react2.default.createElement(
                     'figcaption',
                     { className: 'orbit-caption' },
@@ -3636,11 +3636,11 @@ var Home = function (_get__$Component) {
                 _react2.default.createElement(
                   'figure',
                   { className: 'orbit-figure' },
-                  _react2.default.createElement('img', { className: 'orbit-image', src: 'https://placehold.it/1200x600/666&text=Slide-4', alt: 'Space' }),
+                  _react2.default.createElement('img', { className: 'orbit-image', src: 'http://blog.edmentum.com/sites/blog.edmentum.com/files/styles/blog_image/public/images/BlendedLearningFAQ_5.png?itok=jAO9ddaj', alt: 'Space' }),
                   _react2.default.createElement(
                     'figcaption',
                     { className: 'orbit-caption' },
-                    'LEarn new, more effective ways to plan, organize, and exicute your code!'
+                    'Learn new, more effective ways to plan, organize, and exicute your code!'
                   )
                 )
               )
@@ -4517,9 +4517,10 @@ var question = function (_get__$Component) {
 				case 'q9':
 
 					return _react2.default.createElement(_QuestionCard_Component9, {
-						label: "",
+						title: "Almost there!",
+						label: "It's time, take what yuu've written and convert it all into your final pseudo code. Now is the time to check and confirm you didn't leave anything out!",
 						onNext: function onNext() {
-							return _this3.onNextCard('q10');
+							return _this3.onNextCard('q1');
 						},
 						handleInputChange: this.handleInputChange,
 						text: this.state.text,
@@ -4562,7 +4563,9 @@ var question = function (_get__$Component) {
 					_react2.default.createElement('br', null),
 					'Combined steps: ',
 					this.state.answer_q8,
-					_react2.default.createElement('br', null)
+					_react2.default.createElement('br', null),
+					'Final PseudoCode: ',
+					this.state.answer_q9
 				),
 				this.renderSwitch(this.state)
 			);

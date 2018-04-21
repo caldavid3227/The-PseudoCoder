@@ -25,20 +25,20 @@ class Home extends React.Component {
       </li>
       <li className="orbit-slide">
         <figure className="orbit-figure">
-          <img className="orbit-image" src="https://placehold.it/1200x600/888?text=Slide-2" alt="Space"/>
+          <img className="orbit-image" src="https://blog.nxp.com/wp-content/uploads/2017/10/Software-car-reuse-960x425.jpg" alt="Space"/>
           <figcaption className="orbit-caption">We Welcome You to a new way of setting up your code!</figcaption>
         </figure>
       </li>
       <li className="orbit-slide">
         <figure className="orbit-figure">
-          <img className="orbit-image" src="https://placehold.it/1200x600/777?text=Slide-3" alt="Space"/>
+          <img className="orbit-image" src="https://alivenewspaper.com/wp-content/uploads/2017/08/build_your_business_plan_tool.jpg" alt="Space"/>
           <figcaption className="orbit-caption">Begin and End your code with us!</figcaption>
         </figure>
       </li>
       <li className="orbit-slide">
         <figure className="orbit-figure">
-          <img className="orbit-image" src="https://placehold.it/1200x600/666&text=Slide-4" alt="Space"/>
-          <figcaption className="orbit-caption">LEarn new, more effective ways to plan, organize, and exicute your code!</figcaption>
+          <img className="orbit-image" src="http://blog.edmentum.com/sites/blog.edmentum.com/files/styles/blog_image/public/images/BlendedLearningFAQ_5.png?itok=jAO9ddaj" alt="Space"/>
+          <figcaption className="orbit-caption">Learn new, more effective ways to plan, organize, and exicute your code!</figcaption>
         </figure>
       </li>
     </ul>

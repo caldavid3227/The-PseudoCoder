@@ -174,8 +174,9 @@ class question extends React.Component{
 			case 'q9':				
 				
 				return	<QuestionCard 
-					label={ "" }
-					onNext={ () => this.onNextCard('q10') } 
+					title={"Almost there!"}
+					label={ "It's time, take what yuu've written and convert it all into your final pseudo code. Now is the time to check and confirm you didn't leave anything out!" }
+					onNext={ () => this.onNextCard('q1') } 
 					handleInputChange={ this.handleInputChange }
 					text={ this.state.text }
 					nextStep={ this.onNextStep }
@@ -200,6 +201,7 @@ class question extends React.Component{
 			Required languagses: {this.state.answer_q6}<br/> 
 			Steps by language: {this.state.answer_q7} <br/>
 			Combined steps: {this.state.answer_q8}<br/>
+			Final PseudoCode: {this.state.answer_q9}
 			</p>
 				 {this.renderSwitch(this.state)}		
 			</div>				
