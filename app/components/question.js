@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { IndexLink, Link } from 'react-router';
+
+
 
 import QuestionCard from './Questionnaire/QuestionCard';
 import API from "../../models/API";
@@ -6,7 +10,7 @@ import API from "../../models/API";
 class question extends React.Component{
 
 	constructor(props){
-		super(props)
+;		super(props)
 
 		this.state={
 			key: 'q1',
@@ -15,13 +19,13 @@ class question extends React.Component{
 			answer_q5: [],
 			answer_q6: [],
 			answer_q7: [],
-			answer_q8: []
+			answer_q8: [],
+			answer_q9: []
 		}
 		console.log(API)
 		this.onNextCard=this.onNextCard.bind(this)
 		this.onNextStep=this.onNextStep.bind(this)
     	this.handleInputChange=this.handleInputChange.bind(this)
-    	this.handleFormSubmit=this.handleFormSubmit.bind(this)
 	}
 
 	onNextCard(nextNode){
@@ -63,21 +67,22 @@ class question extends React.Component{
     const { answer, value } = event.target;
     this.setState({
       // [answer]: value
-      text: value
+      text: value,
     });
+      
     console.log(this.state);
   };
 
-  handleFormSubmit(event){
-  	const { answer, value } = event.target;
-      this.setState({
-        answers: [this.state.answer_q1, this.state.answer_q2, this.state.answer_q3, this.state.answer_q4, this.state.answer_q5, this.state.answer_q6, this.state.answer_q7, this.state.answer_q8],
-        text: value       
-      })
+  // handleFormSubmit(event){
+  // 	const { answer, value } = event.target;
+  //     this.setState({
+  //       answers: [this.state.answer_q1, this.state.answer_q2, this.state.answer_q3, this.state.answer_q4, this.state.answer_q5, this.state.answer_q6, this.state.answer_q7, this.state.answer_q8],
+  //       text: value       
+  //     })
 
-        // .then(res => this.loadProject())
-        // .catch(err => console.log(err));
-  };
+  //       // .then(res => this.loadProject())
+  //       // .catch(err => console.log(err));
+  // };
 	
 	renderSwitch(state){
 
@@ -159,9 +164,18 @@ class question extends React.Component{
 			case 'q8':				
 				
 				return	<QuestionCard 
-					title={ "" }
-					label={ "Now that we have a few high level steps and a few steps to complete each of those it's time to look at the different languages you will be dealing with. Please list all the languages and technologies you will need to use to finsish your project." }
-					onNext={ this.handleFormSubmit } 
+					label={ "Now tie in the steps you first made" }
+					onNext={ () => this.onNextCard('q9') } 
+					handleInputChange={ this.handleInputChange }
+					text={ this.state.text }
+					nextStep={ this.onNextStep }
+				/>;
+
+			case 'q9':				
+				
+				return	<QuestionCard 
+					label={ "" }
+					onNext={ () => this.onNextCard('q10') } 
 					handleInputChange={ this.handleInputChange }
 					text={ this.state.text }
 					nextStep={ this.onNextStep }
@@ -178,6 +192,15 @@ class question extends React.Component{
 
 		return(
 			<div>
+			<p>Name of project: {this.state.answer_q1}<br/> 
+			Main goal: {this.state.answer_q2}<br/> 
+			What has to be coded: {this.state.answer_q3}<br/> 
+			Big steps: {this.state.answer_q4}<br/> 
+			Smaller steps: {this.state.answer_q5}<br/> 
+			Required languagses: {this.state.answer_q6}<br/> 
+			Steps by language: {this.state.answer_q7} <br/>
+			Combined steps: {this.state.answer_q8}<br/>
+			</p>
 				 {this.renderSwitch(this.state)}		
 			</div>				
 		);
@@ -185,6 +208,11 @@ class question extends React.Component{
 	}
 }
 
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.token,
+   	text: state.auth.value
+  };
+};
 
-
-export default question
+export default connect(mapStateToProps)(question); 	

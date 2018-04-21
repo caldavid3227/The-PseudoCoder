@@ -20,7 +20,6 @@ class Header extends React.Component {
         <ul className="vertical medium-horizontal menu">
           <li><Link to="/account" activeClassName="active">My Account</Link></li>
           <li><a href="#" onClick={this.handleLogout.bind(this)}>Logout</a></li>
-          <li><Link to="/YourProject" activeClassName="active">Your Projects</Link></li>
         </ul>
       </div>
     ) : (
@@ -28,7 +27,6 @@ class Header extends React.Component {
         <ul className="vertical medium-horizontal menu">
           <li><Link to="/login" activeClassName="active">Log in</Link></li>
           <li><Link to="/signup" activeClassName="active">Sign up</Link></li>
-          <li><Link to="/YourProject" activeClassName="active">Your Projects</Link></li>
         </ul>
       </div>
     );
