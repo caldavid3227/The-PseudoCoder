@@ -4310,33 +4310,8 @@ function YourProject(props) {
 
 	return _react2.default.createElement(
 		'div',
-		{ className: 'grid-x grid-padding-x align-center' },
-		_react2.default.createElement(
-			'div',
-			{ className: 'cell large-5' },
-			_react2.default.createElement(
-				'div',
-				{ className: 'card text-center' },
-				_react2.default.createElement(
-					'h3',
-					null,
-					' ',
-					props.title,
-					' '
-				),
-				!!props.children ? props.children : _react2.default.createElement(
-					'label',
-					null,
-					props.label,
-					_react2.default.createElement('textarea', { placeholder: 'None' })
-				),
-				_react2.default.createElement(
-					'button',
-					{ className: 'hollow button', onClick: props.onNext },
-					'Next'
-				)
-			)
-		)
+		null,
+		props.handleFormSubmit
 	);
 }
 
@@ -4387,7 +4362,11 @@ var question = function (_get__$Component) {
 		_this.state = {
 			key: 'q1',
 			text: "",
-			answer_q1: []
+			answer_q4: [],
+			answer_q5: [],
+			answer_q6: [],
+			answer_q7: [],
+			answer_q8: []
 		};
 		console.log(_get__('API'));
 		_this.onNextCard = _this.onNextCard.bind(_this);
@@ -4448,14 +4427,18 @@ var question = function (_get__$Component) {
 		}
 	}, {
 		key: 'handleFormSubmit',
-		value: function handleFormSubmit() {
-			_get__('API').saveProject({
-				answers: [this.state.answer_q1, this.state.answer_q2, this.state.answer_q3, this.state.answer_q4, this.state.answer_q5]
-			})
-			// .then(res => this.loadProject())
-			.catch(function (err) {
-				return console.log(err);
+		value: function handleFormSubmit(event) {
+			var _event$target2 = event.target,
+			    answer = _event$target2.answer,
+			    value = _event$target2.value;
+
+			this.setState({
+				answers: [this.state.answer_q1, this.state.answer_q2, this.state.answer_q3, this.state.answer_q4, this.state.answer_q5, this.state.answer_q6, this.state.answer_q7, this.state.answer_q8],
+				text: value
 			});
+
+			// .then(res => this.loadProject())
+			// .catch(err => console.log(err));
 		}
 	}, {
 		key: 'renderSwitch',
@@ -4471,6 +4454,12 @@ var question = function (_get__$Component) {
 			var _QuestionCard_Component4 = _get__('QuestionCard');
 
 			var _QuestionCard_Component5 = _get__('QuestionCard');
+
+			var _QuestionCard_Component6 = _get__('QuestionCard');
+
+			var _QuestionCard_Component7 = _get__('QuestionCard');
+
+			var _QuestionCard_Component8 = _get__('QuestionCard');
 
 			switch (state.key) {
 				case 'q1':
@@ -4522,9 +4511,49 @@ var question = function (_get__$Component) {
 					});
 
 				case 'q5':
+
 					return _react2.default.createElement(_QuestionCard_Component5, {
 						title: "Awesome!",
-						label: "Now, break down those larger steps in to smaller steps, just a few per each",
+						label: "Now, break each step down into smaller steps",
+						onNext: function onNext() {
+							return _this3.onNextCard('q6');
+						},
+						handleInputChange: this.handleInputChange,
+						text: this.state.text,
+						nextStep: this.onNextStep
+					});
+
+				case 'q6':
+
+					return _react2.default.createElement(_QuestionCard_Component6, {
+						title: "Great job so far!",
+						label: "Now that we have a few high level steps and a few steps to complete each of those it's time to look at the different languages you will be dealing with. Please list all the languages and technologies you will need to use to finsish your project.",
+						onNext: function onNext() {
+							return _this3.onNextCard('q7');
+						},
+						handleInputChange: this.handleInputChange,
+						text: this.state.text,
+						nextStep: this.onNextStep
+					});
+
+				case 'q7':
+
+					return _react2.default.createElement(_QuestionCard_Component7, {
+						title: "Wonderful, You're dooing great!",
+						label: "It's time to really start breaking things down into steps. Take each of the languages and technologies you listen above and begin breaking them down into steps, you can do this by page or by general overview of what youll need to produce in each language.",
+						onNext: function onNext() {
+							return _this3.onNextCard('q8');
+						},
+						handleInputChange: this.handleInputChange,
+						text: this.state.text,
+						nextStep: this.onNextStep
+					});
+
+				case 'q8':
+
+					return _react2.default.createElement(_QuestionCard_Component8, {
+						title: "",
+						label: "Now that we have a few high level steps and a few steps to complete each of those it's time to look at the different languages you will be dealing with. Please list all the languages and technologies you will need to use to finsish your project.",
 						onNext: this.handleFormSubmit,
 						handleInputChange: this.handleInputChange,
 						text: this.state.text,
@@ -5711,7 +5740,7 @@ var _DefaultExportValue = (_DefaultExportValue2 = {
     return _get__("axios").get("/api/project");
   }
 
-}, _defineProperty(_DefaultExportValue2, "getProject", function getProject() {
+}, _defineProperty(_DefaultExportValue2, "getProject", function getProject(id) {
   return _get__("axios").get("/api/project" + id);
 }), _defineProperty(_DefaultExportValue2, "deleteProject", function deleteProject(id) {
   return _get__("axios").delete("/api/project/" + id);

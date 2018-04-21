@@ -16,6 +16,7 @@ var jwt = require('jsonwebtoken');
 var moment = require('moment');
 var request = require('request');
 var project = require('./models/Project');
+ 
 
 
 // Load environment; variables from .env file
@@ -38,9 +39,9 @@ var configureStore = require('./app/store/configureStore').default;
 
 var app = express();
 
-
-
-mongoose.connect(process.env.MONGODB);
+mongoose.promise = Promise;
+mongoose.connect(process.env.MONGODB , {
+  useMongoClient: true});
 mongoose.connection.on('error', function() {
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
   process.exit(1);

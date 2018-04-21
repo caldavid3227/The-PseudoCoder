@@ -11,7 +11,11 @@ class question extends React.Component{
 		this.state={
 			key: 'q1',
 			text: "",
-			answer_q1: []
+			answer_q4: [],
+			answer_q5: [],
+			answer_q6: [],
+			answer_q7: [],
+			answer_q8: []
 		}
 		console.log(API)
 		this.onNextCard=this.onNextCard.bind(this)
@@ -64,12 +68,15 @@ class question extends React.Component{
     console.log(this.state);
   };
 
-  handleFormSubmit(){
-      API.saveProject({
-        answers: [this.state.answer_q1, this.state.answer_q2, this.state.answer_q3, this.state.answer_q4, this.state.answer_q5]
+  handleFormSubmit(event){
+  	const { answer, value } = event.target;
+      this.setState({
+        answers: [this.state.answer_q1, this.state.answer_q2, this.state.answer_q3, this.state.answer_q4, this.state.answer_q5, this.state.answer_q6, this.state.answer_q7, this.state.answer_q8],
+        text: value       
       })
+
         // .then(res => this.loadProject())
-        .catch(err => console.log(err));
+        // .catch(err => console.log(err));
   };
 	
 	renderSwitch(state){
@@ -104,7 +111,7 @@ class question extends React.Component{
 					handleInputChange={ this.handleInputChange}
 					text={this.state.text}
 				/>;
-
+			
 			case 'q4':				
 				
 				return	<QuestionCard 
@@ -114,20 +121,54 @@ class question extends React.Component{
 					handleInputChange={ this.handleInputChange}
 					text={this.state.text}
 					nextStep={ this.onNextStep }
-				>
-				</QuestionCard>;
-			
+				/>;
 
-			case 'q5':				
-				return	<QuestionCard 
+			case 'q5':
+
+				return  <QuestionCard
 					title={ "Awesome!" }
-					label={ "Now, break down those larger steps in to smaller steps, just a few per each" }
-					onNext={ this.handleFormSubmit } 
-					handleInputChange={ this.handleInputChange}
-					text={this.state.text}
+					label={ "Now, break each step down into smaller steps" }
+					onNext={ () => this.onNextCard('q6') }
+					handleInputChange={ this.handleInputChange }
+					text={ this.state.text }
 					nextStep={ this.onNextStep }
-				/>;	
-			
+					/>;
+
+			case 'q6':				
+				
+				return	<QuestionCard 
+					title={ "Great job so far!" }
+					label={ "Now that we have a few high level steps and a few steps to complete each of those it's time to look at the different languages you will be dealing with. Please list all the languages and technologies you will need to use to finsish your project." }
+					onNext={ () => this.onNextCard('q7') } 
+					handleInputChange={ this.handleInputChange }
+					text={ this.state.text }
+					nextStep={ this.onNextStep }
+				/>;
+
+			case 'q7':				
+				
+				return	<QuestionCard 
+					title={ "Wonderful, You're dooing great!" }
+					label={ "It's time to really start breaking things down into steps. Take each of the languages and technologies you listen above and begin breaking them down into steps, you can do this by page or by general overview of what youll need to produce in each language." }
+					onNext={ () => this.onNextCard('q8') } 
+					handleInputChange={ this.handleInputChange }
+					text={ this.state.text }
+					nextStep={ this.onNextStep }
+				/>;
+
+			case 'q8':				
+				
+				return	<QuestionCard 
+					title={ "" }
+					label={ "Now that we have a few high level steps and a few steps to complete each of those it's time to look at the different languages you will be dealing with. Please list all the languages and technologies you will need to use to finsish your project." }
+					onNext={ this.handleFormSubmit } 
+					handleInputChange={ this.handleInputChange }
+					text={ this.state.text }
+					nextStep={ this.onNextStep }
+				>
+
+
+				</QuestionCard>;
 	
 			
 		};

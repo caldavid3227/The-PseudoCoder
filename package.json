@@ -23,6 +23,7 @@
     "babel-preset-react": "^6.5.0",
     "babelify": "^7.2.0",
     "bcrypt-nodejs": "^0.0.3",
+    "bluebird": "^3.5.1",
     "body-parser": "^1.15.1",
     "browserify": "^13.0.0",
     "compression": "^1.6.2",
@@ -50,6 +51,7 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.0.1",
     "request": "^2.69.0",
+    "schematype": "0.0.7",
     "watchify": "^3.7.0",
     "whatwg-fetch": "^0.11.0"
   },
