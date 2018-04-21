@@ -40,7 +40,7 @@ var configureStore = require('./app/store/configureStore').default;
 var app = express();
 
 mongoose.promise = Promise;
-mongoose.connect(process.env.MONGODB , {
+mongoose.connect(process.env.MONGODB_URI , {
   useMongoClient: true});
 mongoose.connection.on('error', function() {
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
