@@ -26,6 +26,7 @@ class question extends React.Component{
 		this.onNextCard=this.onNextCard.bind(this)
 		this.onNextStep=this.onNextStep.bind(this)
     	this.handleInputChange=this.handleInputChange.bind(this)
+    	this.handleFormSubmit=this.handleFormSubmit.bind(this)
 	}
 
 	onNextCard(nextNode){
@@ -58,6 +59,7 @@ class question extends React.Component{
       .then(res =>
         this.setState({ project: res.data, answer: "" })
       )
+      .then(res => this.setState({answers: res.data}))
       .catch(err => console.log(err));
   	};
 
@@ -73,16 +75,16 @@ class question extends React.Component{
     console.log(this.state);
   };
 
-  // handleFormSubmit(event){
-  // 	const { answer, value } = event.target;
-  //     this.setState({
-  //       answers: [this.state.answer_q1, this.state.answer_q2, this.state.answer_q3, this.state.answer_q4, this.state.answer_q5, this.state.answer_q6, this.state.answer_q7, this.state.answer_q8],
-  //       text: value       
-  //     })
+  handleFormSubmit(){
+  	  API.saveProject()
+       .then(res => {
+      this.setState({
+        answers: [this.state.answer_q1, this.state.answer_q2, this.state.answer_q3, this.state.answer_q4, this.state.answer_q5, this.state.answer_q6, this.state.answer_q7, this.state.answer_q8, this.state.answer_q9]       
+      })
+  })
 
-  //       // .then(res => this.loadProject())
-  //       // .catch(err => console.log(err));
-  // };
+        .catch(err => console.log(err));
+  };
 	
 	renderSwitch(state){
 
@@ -176,7 +178,7 @@ class question extends React.Component{
 				return	<QuestionCard 
 					title={"Almost there!"}
 					label={ "It's time, take what yuu've written and convert it all into your final pseudo code. Now is the time to check and confirm you didn't leave anything out!" }
-					onNext={ () => this.onNextCard('q1') } 
+					onNext={ this.handleFormSubmit } 
 					handleInputChange={ this.handleInputChange }
 					text={ this.state.text }
 					nextStep={ this.onNextStep }
@@ -193,7 +195,7 @@ class question extends React.Component{
 
 		return(
 			<div>
-			<p>Name of project: {this.state.answer_q1}<br/> 
+			{/*<p>Name of project: {this.state.answer_q1}<br/> 
 			Main goal: {this.state.answer_q2}<br/> 
 			What has to be coded: {this.state.answer_q3}<br/> 
 			Big steps: {this.state.answer_q4}<br/> 
@@ -202,7 +204,7 @@ class question extends React.Component{
 			Steps by language: {this.state.answer_q7} <br/>
 			Combined steps: {this.state.answer_q8}<br/>
 			Final PseudoCode: {this.state.answer_q9}
-			</p>
+			</p>*/}
 				 {this.renderSwitch(this.state)}		
 			</div>				
 		);
@@ -217,4 +219,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(question); 	
+export default(question); 	

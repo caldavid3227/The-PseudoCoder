@@ -42,24 +42,28 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="column row">
-        <div className="row">
-          <div className="medium-8 medium-offset-2 columns">
-            <Messages messages={this.props.messages}/>
-            <form onSubmit={this.handleLogin.bind(this)}>
-              <h4>Log In</h4>
-              <label htmlFor="email">Email</label>
-              <input type="email" name="email" id="email" placeholder="Email" value={this.state.email} onChange={this.handleChange.bind(this)} autoFocus/>
-              <label htmlFor="password">Password</label>
-              <input type="password" name="password" id="password" placeholder="Password" value={this.state.password} onChange={this.handleChange.bind(this)}/>
-              <p><Link to="/forgot">Forgot your password?</Link></p>
-              <button type="submit" className="button">Log in</button>
-            </form>
-            <div className="hr-title"><span>or</span></div>
-            <div className="button-group">
-        <button onClick={this.handleGithub.bind(this)} className="button github">Sign in with Github</button>
+      <div className="grid-x grid-padding-x align-center">
+        <div className="cell large-5">
+          <div className="column row">
+            <div className="row">
+              <div className="medium-8 columns text-center">
+                <Messages messages={this.props.messages}/>
+                <form onSubmit={this.handleLogin.bind(this)}>
+                  <h4>Log In!</h4>
+                  <label htmlFor="email">Email:</label>
+                  <input type="email" name="email" id="email" placeholder="Email" value={this.state.email} onChange={this.handleChange.bind(this)} autoFocus/>
+                  <label htmlFor="password">Password:</label>
+                  <input type="password" name="password" id="password" placeholder="Password" value={this.state.password} onChange={this.handleChange.bind(this)}/>
+                  <p><Link to="/forgot">Forgot your password?</Link></p>
+                  <button type="submit" className="button">Log in</button>
+                </form>
+                <div className="hr-title"><span>or</span></div>
+                <div className="button-group align-center">
+            <button onClick={this.handleGithub.bind(this)} className="button github">Sign in with Github</button>
+                </div>
+                <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
+              </div>
             </div>
-            <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
           </div>
         </div>
       </div>
